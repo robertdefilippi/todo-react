@@ -14,7 +14,7 @@ class App extends Component {
         return (
 
             <div>
-                <Jumbotron style={{'text-align': 'center'}}>
+                <Jumbotron style={{'textAlign': 'center'}}>
                     <h1 className="App-title">Welcome to my To-Do React App</h1>
                     <p>Add items to your to-do list with the button below</p>
                 </Jumbotron>

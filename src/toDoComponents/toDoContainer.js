@@ -21,6 +21,7 @@ export default class ToDoContainer extends Component {
         this.handleChangeToDoItem = this.handleChangeToDoItem.bind(this);
         this.handleDeleteToDoItem = this.handleDeleteToDoItem.bind(this);
         this.handleCompleteToDoItem = this.handleCompleteToDoItem.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
 
     }
 
@@ -106,6 +107,13 @@ export default class ToDoContainer extends Component {
         });
     }
 
+    handleKeyPress(e) {
+        if (e.key === "Enter") {
+            this.handleAddToDoItem(e);
+
+        }
+    }
+
     render() {
 
         return (
@@ -117,23 +125,25 @@ export default class ToDoContainer extends Component {
                 />
 
                 <Navbar style={{'maxWidth': '500px'}}>
-                    <Navbar.Form style={{'maxWidth': '500px', 'padding-right': '40px'}}>
+                    <Navbar.Form style={{'maxWidth': '500px', 'paddingRight': '40px'}}>
                         <FormControl
                             onChange={this.handleChangeToDoItem}
                             value={this.state.toDoWhat}
-                        />
+                            onKeyPress={this.handleKeyPress}
+                    />
 
-                        {'  '}
+                    {'  '}
 
-                        <Button className="pull-right"
-                                bsStyle="default"
-                                onClick={this.handleAddToDoItem}
-                                disabled={this.state.toDoWhat.length < 1}
-                                placeholder='Add Item to To-Do List'>Add Item to List
-                        </Button>
-                    </Navbar.Form>
-                </Navbar>
-            </div>
-        );
+                    <Button className="pull-right"
+                            bsStyle="default"
+                            onClick={this.handleAddToDoItem}
+                            disabled={this.state.toDoWhat.length < 1}
+                            placeholder='Add Item to To-Do List'>Add Item to List
+                    </Button>
+                </Navbar.Form>
+            </Navbar>
+    </div>
+    )
+        ;
     }
 }
